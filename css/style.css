@@ -5,9 +5,11 @@
 }
 
 #result {
-  text-align: center;
+  margin-top: 40px;
 }
 
 #titleText {
   text-align: center;
 }
+
+.ui-helper-hidden-accessible { display:none; }

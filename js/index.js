@@ -468,13 +468,11 @@ $(function() {
 
 function getUserSearch() {
   userSearched = document.getElementById("searchBox").value;
-  userSearchedLower = userSearched.toLowerCase();
 }
 
 function searchCrunchyroll() {
   isOnCrunchyroll = false;
-  var crunchyrollShowsLowered = crunchyrollShows.toString().toLowerCase();
-  var searchResult = crunchyrollShowsLowered.indexOf(userSearchedLower);
+  var searchResult = crunchyrollShows.indexOf(userSearched);
   if (searchResult > -1) {
     isOnCrunchyroll = true;
   }
@@ -482,8 +480,7 @@ function searchCrunchyroll() {
 
 function searchNetflix() {
   isOnNetflix = false;
-  var netflixShowsLowered = netflixShows.toString().toLowerCase();
-  var searchResult = netflixShowsLowered.indexOf(userSearchedLower);
+  var searchResult = netflixShows.indexOf(userSearched);
   if (searchResult > -1) {
     isOnNetflix = true;
   }
@@ -491,8 +488,7 @@ function searchNetflix() {
 
 function searchHulu() {
   isOnHulu = false;
-  var huluShowsLowered = huluShows.toString().toLowerCase();
-  var searchResult = huluShowsLowered.indexOf(userSearchedLower);
+  var searchResult = huluShows.indexOf(userSearched);
   if (searchResult > -1) {
     isOnHulu = true;
   }
@@ -506,26 +502,26 @@ function returnResult() {
   searchHulu();
   
   if (isOnCrunchyroll === true && isOnNetflix === true && isOnHulu === true) {
-    $('#result').html(userSearched + ' is on Crunchyroll, Netflix, and Hulu!')
+    $('#result').html(userSearched + ' is on Crunchyroll, Netflix, and Hulu!');
   } else if (isOnCrunchyroll === true && isOnNetflix == true && isOnHulu === false) {
-    $('#result').html(userSearched + ' is on Crunchyroll and Netflix!')
+    $('#result').html(userSearched + ' is on Crunchyroll and Netflix!');
   } else if (isOnCrunchyroll === true && isOnNetflix == false && isOnHulu === true) {
-    $('#result').html(userSearched + ' is on Crunchyroll and Hulu!')
+    $('#result').html(userSearched + ' is on Crunchyroll and Hulu!');
   } else if (isOnCrunchyroll === false && isOnNetflix == true && isOnHulu === true) {
-    $('#result').html(userSearched + ' is on Netflix, and Hulu!')
+    $('#result').html(userSearched + ' is on Netflix, and Hulu!');
   } else if (isOnCrunchyroll === true && isOnNetflix == false && isOnHulu === false) {
-    $('#result').html(userSearched + ' is on Crunchyroll!')
+    $('#result').html(userSearched + ' is on Crunchyroll!');
   } else if (isOnCrunchyroll === false && isOnNetflix == true && isOnHulu === false) {
-    $('#result').html(userSearched + ' is on Netflix!')
+    $('#result').html(userSearched + ' is on Netflix!');
   } else if (isOnCrunchyroll === false && isOnNetflix == false && isOnHulu === true) {
-    $('#result').html(userSearched + ' is on Hulu!')
+    $('#result').html(userSearched + ' is on Hulu!');
   } else {
-    $('#result').html(userSearched + ' cannot be found on Crunchyroll, Hulu, or Netflix.')
+    $('#result').html(userSearched + ' cannot be found on Crunchyroll, Hulu, or Netflix.');
   }
 }
 
 $("#searchBox").keypress(function(e) {
     if(e.which == 13) {
-        returnResult();
+        returnResult();	
     }
 });
